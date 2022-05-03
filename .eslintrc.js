@@ -7,7 +7,7 @@ module.exports = {
     node: true,
   },
   extends: [
-    'plugin:vue/vue3-strongly-recommended',
+    'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier',
   ],
@@ -72,10 +72,11 @@ module.exports = {
     ],
     'handle-callback-err': [2, '^(err|error)$'],
     indent: [
-      2,
+      'error',
       2,
       {
         SwitchCase: 1,
+        VariableDeclarator: { 'var': 2, 'let': 2, 'const': 3 },
       },
     ],
     'jsx-quotes': [2, 'prefer-single'],
@@ -270,5 +271,6 @@ module.exports = {
       },
     ],
     'array-bracket-spacing': [2, 'never'],
+    // note you must disable the base rule as it can report incorrect errors
   },
 }

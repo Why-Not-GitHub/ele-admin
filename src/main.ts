@@ -2,7 +2,9 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import store from '@/store'
 import router from '@/router'
+import { setRootFontSize } from '@/utils/setRootFontSize'
 
+setRootFontSize()
 const app = createApp(App)
 app.use(store)
 app.use(router)

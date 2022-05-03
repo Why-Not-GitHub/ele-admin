@@ -31,11 +31,10 @@ export default defineConfig({
       scss: {
         additionalData: `
          @use "@/styles/index.scss";
-         @use "@/styles/element.scss";
          `, // 自定义主题，并按需引入
         javascriptEnabled: true,
       },
-    },
+    }
   },
   resolve: {
     alias: {

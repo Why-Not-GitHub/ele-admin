@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-
-const BaseRoutes : Array<RouteRecordRaw> = [
+const Layout = () => {
+  import('@/layout/index.vue')
+}
+const BaseRoutes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     name: 'Login',
@@ -14,12 +16,13 @@ const BaseRoutes : Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Index',
+    component: Layout,
+    redirect: '/home',
     meta: {
       title: '主页',
       keepAlive: true,
       requiredAuth: true,
     },
-    component: () => import('@/pages/index.vue'),
   },
 ]
 

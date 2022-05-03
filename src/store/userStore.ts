@@ -3,14 +3,17 @@ import { defineStore } from 'pinia'
 const userStore = defineStore('user', {
   state: () => {
     return {
-      name: 'Wenbin'
+      initUserName: 'Anonymous',
     }
+  },
+  getters: {
+    userName: (state) => state.initUserName,
   },
   actions: {
     updateName(name: string) {
-      this.name = name
-    }
-  }
+      this.initUserName = name
+    },
+  },
 })
 
 export default userStore

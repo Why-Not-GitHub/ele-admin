@@ -1,0 +1,32 @@
+<script lang="ts" setup>
+import { UserFilled } from '@element-plus/icons-vue'
+import userStore from '@/store/userStore'
+import { storeToRefs } from 'pinia'
+const { userName } = storeToRefs(userStore())
+</script>
+<template>
+  <div class="layout-user-tab">
+    <div class="avatar">
+      <el-avatar shape="square" :icon="UserFilled" />
+    </div>
+    <div class="user-options">{{ userName }}</div>
+  </div>
+</template>
+
+<style scoped lang="scss">
+.layout-user-tab {
+  padding: 0 20px;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .user-options {
+    width: 60%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+  }
+}
+</style>

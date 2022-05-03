@@ -1,11 +1,12 @@
 <script setup lang="ts">
 // 国际化
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
+import Layout from '@/layout/index.vue'
 </script>
 
 <template>
   <el-config-provider :locale="zhCn">
-    <router-view></router-view>
+    <Layout></Layout>
   </el-config-provider>
 </template>
 
