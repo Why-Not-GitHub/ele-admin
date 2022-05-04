@@ -9,13 +9,23 @@ const handleOpen = (key: string, keyPath: string[]) => {
 const handleClose = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
+
+const handleSelect = (key: string, keyPath: string[]) => {
+  console.log('select', key, keyPath)
+}
 const { height: maxScrollHeight } = useScreenLengthRef({ height: 890 })
 </script>
 <template>
   <aside class="layout-aside">
     <LayoutUserTab></LayoutUserTab>
     <el-scrollbar :max-height="maxScrollHeight">
-      <el-menu default-active="2" class="el-menu-vertical" @open="handleOpen" @close="handleClose">
+      <el-menu
+        default-active="2"
+        class="el-menu-vertical"
+        @select="handleSelect"
+        @open="handleOpen"
+        @close="handleClose"
+      >
         <el-sub-menu index="1">
           <template #title>
             <el-icon>
