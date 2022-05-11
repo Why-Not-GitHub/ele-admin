@@ -18,12 +18,14 @@ const { height: maxScrollHeight } = useScreenLengthRef({ height: 890 })
 <template>
   <aside class="layout-aside">
     <LayoutUserTab></LayoutUserTab>
+    <CollapseButton class="collapse-button"></CollapseButton>
     <el-scrollbar :max-height="maxScrollHeight">
       <el-menu
         default-active="2"
         class="el-menu-vertical"
         @select="handleSelect"
         @open="handleOpen"
+        :collapse="collapse"
         @close="handleClose"
       >
         <el-sub-menu index="1">
@@ -105,9 +107,9 @@ const { height: maxScrollHeight } = useScreenLengthRef({ height: 890 })
   position: relative;
   border-right: 1px solid #eee;
 
-  .toggle-aside-collapse {
+  .collapse-button {
     position: absolute;
-    right: 10px;
+    right: -10px;
     top: 20px;
     width: 30px;
     height: 30px;

@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 
 export interface BreadcrumbRecord {
   name: string
-  path?: string
+  path: string
 }
 
 const initBreadcrumbList: Array<BreadcrumbRecord> = [
