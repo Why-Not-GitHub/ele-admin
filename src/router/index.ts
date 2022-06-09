@@ -1,10 +1,28 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import NotFound from '@/pages/NotFound.vue'
 
-const Layout = () => {
-  import('@/layout/index.vue')
-}
-const BaseRoutes: Array<RouteRecordRaw> = [
+export const BaseRoutes: Array<RouteRecordRaw> = [
+  {
+    /* 项目首页 */
+    path: '/',
+    name: 'Index',
+    component: () => import('@/layout/index.vue'),
+    redirect: '/home',
+    meta: {
+      title: '主页',
+      keepAlive: true,
+    },
+    children: [
+      {
+        path: 'home',
+        component: () => import('@/pages/Index.vue'),
+        meta: {
+          title: '主页',
+          keepAlive: true,
+        },
+      },
+    ],
+  },
   {
     /* 项目登录页 */
     path: '/login',
@@ -18,29 +36,40 @@ const BaseRoutes: Array<RouteRecordRaw> = [
     },
   },
   {
-    /* 项目首页 */
-    path: '/home',
-    name: 'Home',
-    component: () => import('@/pages/Index.vue'),
+    /* 菜单1 */
+    path: '/menu',
+    name: 'Menu',
+    component: () => import('@/layout/index.vue'),
+    redirect: '/menu/menu11',
     meta: {
-      title: '主页',
-      keepAlive: true,
-      requiredAuth: true,
-      hidden: true,
+      title: '菜单1',
+      name: 'Lock',
     },
-  },
-  {
-    /* 项目首页 */
-    path: '/',
-    name: 'Index',
-    component: Layout,
-    redirect: '/home',
-    meta: {
-      title: '主页',
-      keepAlive: true,
-      requiredAuth: true,
-      hidden: true,
-    },
+    children: [
+      {
+        path: 'menu11',
+        component: () => import('@/pages/Menu/Menu1/Menu1.vue'),
+        meta: {
+          title: 'menu1-1',
+        },
+      },
+      {
+        path: 'menu12',
+        component: () => import('@/pages/Menu/Menu2/Menu2.vue'),
+        meta: {
+          title: 'menu1-2',
+        },
+        children: [
+          {
+            path: 'menu123',
+            component: () => import('@/pages/Menu/Menu2/Menu3/Menu3.vue'),
+            meta: {
+              title: 'menu1-2-3',
+            },
+          },
+        ],
+      },
+    ],
   },
   {
     /* 404 页面*/
@@ -67,6 +96,11 @@ const BaseRoutes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes: BaseRoutes,
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.path === from.path) return
+  next()
 })
 
 export default router

@@ -15,7 +15,7 @@ const { userName } = storeToRefs(userStore())
 
 <style scoped lang="scss">
 .layout-user-tab {
-  padding: 0 20px;
+  padding: 0 5px;
   height: 60px;
   display: flex;
   justify-content: space-around;

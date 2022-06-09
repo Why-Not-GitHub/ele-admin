@@ -7,7 +7,9 @@ const path = computed(() => routes.path)
 </script>
 
 <template>
-  <router-view :key="path" />
+  <router-view :key="path" v-slot="{ Component }">
+    <component :is="Component" />
+  </router-view>
 </template>
 
 <style></style>

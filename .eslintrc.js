@@ -71,14 +71,6 @@ module.exports = {
       },
     ],
     'handle-callback-err': [2, '^(err|error)$'],
-    indent: [
-      'error',
-      2,
-      {
-        SwitchCase: 1,
-        VariableDeclarator: { 'var': 2, 'let': 2, 'const': 3 },
-      },
-    ],
     'jsx-quotes': [2, 'prefer-single'],
     'key-spacing': [
       2,

@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 <script lang="ts" setup>
-import LayoutMain from '@/layout/components/LayoutMain.vue'
-import Header from '@/layout/components/LayoutHeader.vue'
-import Aside from '@/layout/components/LayoutAside.vue'
+import LayoutMain from '@/layout/components/Main.vue'
+import Header from '@/layout/components/Header.vue'
+import Aside from '@/layout/components/Aside.vue'
 import { useScreenLengthRef } from '@/hooks/useLengthByScreenResizeRaio'
 
-const { width: asideWidth } = useScreenLengthRef({ width: 250 })
+const { width: asideWidth } = useScreenLengthRef({ width: 200 })
 </script>
 
 <template>
