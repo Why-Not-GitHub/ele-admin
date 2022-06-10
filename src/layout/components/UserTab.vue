@@ -21,6 +21,9 @@ const { userName } = storeToRefs(userStore())
   justify-content: space-around;
   align-items: center;
 
+  .avatar {
+    margin: 0 1em;
+  }
   .user-options {
     width: 60%;
     white-space: nowrap;

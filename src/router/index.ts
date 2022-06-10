@@ -56,6 +56,7 @@ export const BaseRoutes: Array<RouteRecordRaw> = [
       {
         path: 'menu12',
         component: () => import('@/pages/Menu/Menu2/Menu2.vue'),
+        redirect: '/menu/menu12/menu123',
         meta: {
           title: 'menu1-2',
         },

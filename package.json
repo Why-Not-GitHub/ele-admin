@@ -24,7 +24,7 @@
     "element-plus": "^2.1.11",
     "lodash": "^4.17.21",
     "pinia": "^2.0.13",
-    "tailwindcss": "^3.0.24",
+    "tailwindcss": "^3.1.1",
     "vue": "^3.2.25",
     "vue-router": "^4.0.14"
   },

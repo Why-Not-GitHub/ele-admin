@@ -3,19 +3,14 @@
 import LayoutMain from '@/layout/components/Main.vue'
 import Header from '@/layout/components/Header.vue'
 import Aside from '@/layout/components/Aside.vue'
-import { useScreenLengthRef } from '@/hooks/useLengthByScreenResizeRaio'
-
-const { width: asideWidth } = useScreenLengthRef({ width: 200 })
 </script>
 
 <template>
   <div class="common-layout">
     <el-container>
-      <el-aside :width="`${asideWidth > 180 ? asideWidth : 180}px`">
-        <Aside></Aside>
-      </el-aside>
+      <Aside></Aside>
       <el-container>
-        <el-header>
+        <el-header style="border-bottom: 1px solid #eeeeee">
           <Header></Header>
         </el-header>
         <el-main>
