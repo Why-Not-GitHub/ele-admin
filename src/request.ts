@@ -10,7 +10,6 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   function (config) {
     // 在发送请求之前做些什么
-    config.method = 'post' // 默认方法设置为 post方法
     return config
   },
   function (error) {

@@ -6,11 +6,7 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: [
-    'plugin:vue/vue3-recommended',
-    'plugin:@typescript-eslint/recommended',
-    'prettier',
-  ],
+  extends: ['plugin:vue/vue3-recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
   parserOptions: {
     ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',
@@ -236,15 +232,7 @@ module.exports = {
       1,
       'always',
       {
-        markers: [
-          'global',
-          'globals',
-          'eslint',
-          'eslint-disable',
-          '*package',
-          '!',
-          ',',
-        ],
+        markers: ['global', 'globals', 'eslint', 'eslint-disable', '*package', '!', ','],
       },
     ],
     'template-curly-spacing': [2, 'never'],
@@ -263,6 +251,7 @@ module.exports = {
       },
     ],
     'array-bracket-spacing': [2, 'never'],
+    '@typescript-eslint/ban-ts-comment': 'off',
     // note you must disable the base rule as it can report incorrect errors
   },
 }
