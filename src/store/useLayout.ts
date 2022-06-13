@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 const useLayout = defineStore('layout', {
   state: () => ({
-    initialCollapse: true,
+    initialCollapse: false,
   }),
   getters: {
     collapse(state) {

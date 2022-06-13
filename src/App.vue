@@ -1,6 +1,8 @@
 <script setup lang="ts">
 // 国际化
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
+
+document.title = import.meta.env.VITE_APP_TITLE // 更改浏览器标题
 </script>
 
 <template>
