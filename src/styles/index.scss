@@ -1,2 +1,10 @@
-@use 'css-reset-and-normalize';
 @use './element.scss';
+
+/* 去除浏览器表单自动填充的样式 */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-transition-delay: 99999s;
+  -webkit-transition: color 99999s ease-out, background-color 99999s ease-out;
+}

@@ -11,7 +11,8 @@ export default ({ command }: ConfigEnv): UserConfigExport => {
       preprocessorOptions: {
         scss: {
           additionalData: `
-         @use "@/styles/index.scss";
+          @use '@/styles/index.scss';
+          @use '@/styles/standard.scss' as *;
          `, // 自定义主题，并按需引入
           javascriptEnabled: true,
         },
