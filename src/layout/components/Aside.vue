@@ -7,12 +7,12 @@ import { BaseRoutes } from '@/router'
 import { computed, ref } from 'vue'
 import useLayout from '@/store/useLayout'
 import { storeToRefs } from 'pinia'
+import { useScreenLengthRef } from '@/hooks/useLengthByScreenResizeRaio'
 
 const { collapse } = storeToRefs(useLayout())
 
 console.log(BaseRoutes)
 const routes = ref(BaseRoutes)
-// console.log(filterRoutePath(routes))
 
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
@@ -26,7 +26,9 @@ const handleSelect = (key: string, keyPath: string[]) => {
   router.push({ path: keyPath.join('/').replace('//', '/') })
 }
 const asideWidth = computed(() => {
-  return collapse.value ? '76px' : '220px'
+  return collapse.value
+    ? `${useScreenLengthRef({ width: 76 }).width.value}px`
+    : `${useScreenLengthRef({ width: 220 }).width.value}px`
 })
 </script>
 <template>
@@ -64,7 +66,12 @@ const asideWidth = computed(() => {
     overflow-y: auto;
   }
 }
+
 :deep(.el-menu--collapse .el-menu-item .el-icon) {
   margin-left: -4px !important;
+}
+
+:deep(.el-menu) {
+  border-right: none;
 }
 </style>
