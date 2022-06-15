@@ -1,12 +1,13 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
-import NotFound from '@/pages/NotFound.vue'
+import routerGuardSetter from './permission'
+import Layout from '@/layout/index.vue'
 
 export const BaseRoutes: Array<RouteRecordRaw> = [
   {
     /* 项目首页 */
     path: '/',
     name: 'Index',
-    component: () => import('@/layout/index.vue'),
+    component: Layout,
     redirect: '/home',
     meta: {
       title: '主页',
@@ -19,6 +20,28 @@ export const BaseRoutes: Array<RouteRecordRaw> = [
         meta: {
           title: '主页',
           keepAlive: true,
+        },
+      },
+    ],
+  },
+  {
+    /* 页面错误处理 */
+    path: '/error',
+    name: 'Error',
+    component: Layout,
+    redirect: '/error/404',
+    meta: {
+      hidden: true,
+      title: '错误处理',
+    },
+    children: [
+      {
+        /* 404 页面*/
+        path: '404',
+        name: '404',
+        component: () => import('@/pages/NotFound.vue'),
+        meta: {
+          hidden: true,
         },
       },
     ],
@@ -39,7 +62,7 @@ export const BaseRoutes: Array<RouteRecordRaw> = [
     /* 菜单1 */
     path: '/menu',
     name: 'Menu',
-    component: () => import('@/layout/index.vue'),
+    component: Layout,
     redirect: '/menu/menu11',
     meta: {
       title: '菜单1',
@@ -73,21 +96,11 @@ export const BaseRoutes: Array<RouteRecordRaw> = [
     ],
   },
   {
-    /* 404 页面*/
-    path: '/404',
-    name: '404',
-    component: () => {
-      import('@/pages/NotFound.vue')
-    },
-    meta: {
-      hidden: true,
-    },
-  },
-  {
     /* hash模式下：捕获项目无法确定路由的页面，对用户展示404页面 */
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
-    component: NotFound,
+    redirect: '/error/404',
+    component: Layout,
     meta: {
       hidden: true,
     },
@@ -98,10 +111,5 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes: BaseRoutes,
 })
-
-router.beforeEach((to, from, next) => {
-  if (to.path === from.path) return
-  next()
-})
-
+routerGuardSetter(router)
 export default router

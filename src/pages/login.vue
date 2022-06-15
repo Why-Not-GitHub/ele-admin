@@ -3,6 +3,7 @@ import { StarFilled } from '@element-plus/icons-vue'
 import { reactive, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
+import { authLogin } from '@/api/auth'
 
 const router = useRouter()
 
@@ -13,7 +14,7 @@ const loginFormState = reactive({
   userName: 'admin',
 })
 
-const login = () => {
+const login = async () => {
   const messageDuration = 800
   loading.value = true
   if (loginFormState.userName === '') {
@@ -27,8 +28,13 @@ const login = () => {
       duration: messageDuration,
     })
   } else {
+    const res = await authLogin({
+      userName: loginFormState.userName,
+      password: loginFormState.password,
+    })
+    console.log(res)
     ElMessage.success({
-      message: '登陆成功',
+      message: '登录成功',
       duration: messageDuration,
       onClose() {
         router.push('/')
@@ -52,7 +58,7 @@ const login = () => {
         </el-icon>
       </el-divider>
       <div class="login-form w-1/3 h-60">
-        <div class="text-3xl text-cyan-700 -mt-3">ele-admin</div>
+        <div class="text-3xl text-cyan-700 -mt-3">ELE Admin</div>
         <el-form class="h-full flex flex-col justify-evenly mt-1">
           <el-form-item>
             <el-input v-model:model-value="loginFormState.userName" placeholder="账号" size="large"></el-input>
@@ -93,9 +99,9 @@ const login = () => {
 
       .img-description {
         position: absolute;
-        left: 25px;
-        bottom: -25px;
-        font-size: 13px;
+        left: 20px;
+        bottom: -18px;
+        font-size: 10px;
         color: #c6c6c6;
         text-decoration-color: #c6c6c6;
       }

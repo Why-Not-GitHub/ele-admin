@@ -1,16 +1,38 @@
-# Vue 3 + TypeScript + Vite
+<p align="center">
+  <img width="256" src="./src/assets/logo.png">
+</p>
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+<p align="center">
+  <a href="https://v3.cn.vuejs.org/">
+    <img src="https://img.shields.io/badge/Vue-3.2x%20-brightgreen" alt="vue">
+  </a>
+<a href="https://vitejs.dev/">
+    <img src="https://img.shields.io/badge/vite-2x-red" alt="vite">
+  </a>
+  <a href="https://element-plus.org/zh-CN/">
+    <img src="https://img.shields.io/badge/Element%20Plus-2x-blue" alt="element-plus">
+  </a>
+  <a href="https://github.com/PanJiaChen/vue-element-admin/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/Why-Not-GitHub/ele-admin" alt="license">
+  </a>
+</p>
 
-## Recommended IDE Setup
+ELE-Admin 是基于 Vue 3 + TypeScript + Vite + Element Plus + Pinia 开发的、适用于中小型项目的简约管理系统项目框架。
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+## 功能特性
+- [x] 常用PC端电脑分辨率自适应
+- [x] 多级菜单
+- [x] 动态路由
+- [ ] 权限控制
 
-## Type Support For `.vue` Imports in TS
+## 开发特性
+1. TypeScript 支持
+2. Vue 3.2x setup 语法糖
+3. mockJS 开发支持
+4. Element Plus 组件自动导入
+5. git commit 提交规范
+6. Eslint, Prettier 代码规范
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
-
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
-
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+## 特别鸣谢
+**设计师：@今煕**，包含本项目的UI设计、界面设计、插画设计等几乎所有的设计工作，衷心感谢您的踏实且勤劳的工作，
+让项目能够得到快速推进！

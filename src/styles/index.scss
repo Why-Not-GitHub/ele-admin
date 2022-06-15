@@ -8,3 +8,22 @@ input:-webkit-autofill:active {
   -webkit-transition-delay: 99999s;
   -webkit-transition: color 99999s ease-out, background-color 99999s ease-out;
 }
+
+/* 发生了某些未知错误，导致 element-plus 按钮的样式丢失了的问题 */
+.el-button {
+  border: none;
+  outline: none;
+  background: var(--el-button-bg-color);
+  border-color: var(--el-button-border-color);
+  color: var(--el-button-text-color);
+
+  &:hover {
+    background: var(--el-button-hover-bg-color);
+    border-color: var(--el-button-hover-border-color);
+    color: var(--el-button-hover-text-color);
+  }
+
+  &:active {
+    color: var(--el-button-active-text-color);
+  }
+}
