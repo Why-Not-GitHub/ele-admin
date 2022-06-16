@@ -6,13 +6,18 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['plugin:vue/vue3-recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
+  extends: [
+    'plugin:vue/vue3-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
+    'plugin:prettier/recommended',
+  ],
   parserOptions: {
     ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',
     sourceType: 'module',
   },
-  plugins: ['vue', '@typescript-eslint'],
+  plugins: ['vue', '@typescript-eslint', 'prettier'],
   rules: {
     'vue/script-setup-uses-vars': 'error',
     'vue/singleline-html-element-content-newline': 'off',
@@ -253,5 +258,6 @@ module.exports = {
     'array-bracket-spacing': [2, 'never'],
     '@typescript-eslint/ban-ts-comment': 'off',
     // note you must disable the base rule as it can report incorrect errors
+    'prettier/prettier': 'error',
   },
 }

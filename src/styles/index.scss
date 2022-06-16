@@ -27,3 +27,7 @@ input:-webkit-autofill:active {
     color: var(--el-button-active-text-color);
   }
 }
+
+.el-menu-item .el-menu-tooltip__trigger {
+  left: 4px;
+}
