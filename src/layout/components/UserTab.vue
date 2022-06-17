@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { UserFilled } from '@element-plus/icons-vue'
-import userStore from '@/store/userStore'
-import { storeToRefs } from 'pinia'
-const { userName } = storeToRefs(userStore())
+import { getUsername } from '@/store/authStore'
+const userName = getUsername()
 </script>
 <template>
   <div class="layout-user-tab">

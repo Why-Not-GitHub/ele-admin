@@ -1,11 +1,6 @@
 import request from '@/request'
 
-type LoginParams = {
-  userName: string // 用户名
-  password: string // 密码
-}
-
-export const authLogin = (data: LoginParams) => {
+export const authLogin = (data: AuthLoginParams) => {
   return request({
     url: '/auth/login',
     method: 'post',

@@ -3,21 +3,21 @@ import { StarFilled } from '@element-plus/icons-vue'
 import { reactive, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
-import { authLogin } from '@/api/auth'
+import authStore from '@/store/authStore'
 
 const router = useRouter()
 
 const loading = ref(false)
 
-const loginFormState = reactive({
+const loginFormState = reactive<AuthLoginParams>({
   password: 'admin',
-  userName: 'admin',
+  username: 'admin',
 })
 
 const login = async () => {
   const messageDuration = 800
   loading.value = true
-  if (loginFormState.userName === '') {
+  if (loginFormState.username === '') {
     ElMessage.warning({
       message: '请输入账号',
       duration: messageDuration,
@@ -28,19 +28,24 @@ const login = async () => {
       duration: messageDuration,
     })
   } else {
-    const res = await authLogin({
-      userName: loginFormState.userName,
-      password: loginFormState.password,
-    })
-    console.log(res)
-    ElMessage.success({
-      message: '登录成功',
-      duration: messageDuration,
-      onClose() {
-        router.push('/')
-        loading.value = false
-      },
-    })
+    try {
+      await authStore().userLogin({
+        username: loginFormState.username,
+        password: loginFormState.password,
+      })
+      ElMessage.success({
+        message: '登录成功',
+        duration: messageDuration,
+        onClose() {
+          router.push('/')
+        },
+      })
+    } catch (e) {
+      console.warn(e)
+    }
+    setTimeout(() => {
+      loading.value = false
+    }, 500)
   }
 }
 </script>
@@ -61,7 +66,7 @@ const login = async () => {
         <div class="text-3xl text-cyan-700 -mt-3">ELE Admin</div>
         <el-form class="h-full flex flex-col justify-evenly mt-1">
           <el-form-item>
-            <el-input v-model:model-value="loginFormState.userName" placeholder="账号" size="large"></el-input>
+            <el-input v-model:model-value="loginFormState.username" placeholder="账号" size="large"></el-input>
           </el-form-item>
           <el-form-item>
             <el-input
@@ -72,7 +77,7 @@ const login = async () => {
               show-password
             ></el-input>
           </el-form-item>
-          <el-button v-loading="loading" size="large" type="primary" @click="login">登录</el-button>
+          <el-button :loading="loading" size="large" type="primary" @click="login">登录</el-button>
         </el-form>
         <el-link v-show="false" class="-mt-8 ml-1">忘记密码？</el-link>
       </div>

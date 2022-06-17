@@ -1,4 +1,5 @@
 import { MockMethod } from 'vite-plugin-mock'
+import * as mockjs from 'mockjs'
 /* MockMethod
 {
   // 请求地址
@@ -19,13 +20,21 @@ export default [
   {
     url: '/auth/login',
     method: 'post',
-    response: ({ query }) => {
-      console.log(query)
+    response: () => {
       return {
         code: 0,
-        data: {
-          admin_token: 'get',
-        },
+        name: '@Last',
+        'token|1000000000000008-9999999999999999': 1,
+      }
+    },
+  },
+  {
+    url: '/auth/avatar',
+    method: 'post',
+    response: () => {
+      return {
+        code: 0,
+        data: mockjs.Random.image(),
       }
     },
   },

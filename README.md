@@ -22,7 +22,7 @@ ELE-Admin 是基于 Vue 3 + TypeScript + Vite + Element Plus + Pinia 开发的�
 ## 功能特性
 - [x] 常用PC端电脑分辨率自适应
 - [x] 多级菜单
-- [x] 动态路由
+- [ ] 动态路由
 - [ ] 权限控制
 
 ## 开发特性
