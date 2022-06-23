@@ -7,3 +7,10 @@ export const authLogin = (data: AuthLoginParams) => {
     data,
   })
 }
+
+export const getRoutes = () => {
+  return request({
+    url: '/auth/getRoutes',
+    method: 'post',
+  })
+}

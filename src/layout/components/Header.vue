@@ -5,12 +5,14 @@ import { storeToRefs } from 'pinia'
 import { ElMessage } from 'element-plus'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import authStore from '@/store/authStore'
 
 const router = useRouter()
 const { collapse } = storeToRefs(useLayout())
 const loading = ref(false)
-const logout = () => {
+const logout = async () => {
   loading.value = true
+  await authStore().userLogout()
   ElMessage.success({
     message: '正在登出账户',
     duration: 1200,

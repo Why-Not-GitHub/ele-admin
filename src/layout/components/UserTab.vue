@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { UserFilled } from '@element-plus/icons-vue'
-import { getUsername } from '@/store/authStore'
+import { getUsername } from '@/utils/auth'
 const userName = getUsername()
 </script>
 <template>

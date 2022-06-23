@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getToken } from '@/store/authStore'
+import { getToken } from '@/utils/auth'
 const user_token = getToken() // 用户登录时暂存的 token
 </script>
 <template>

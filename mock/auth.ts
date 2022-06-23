@@ -1,5 +1,4 @@
 import { MockMethod } from 'vite-plugin-mock'
-import * as mockjs from 'mockjs'
 /* MockMethod
 {
   // 请求地址
@@ -29,13 +28,69 @@ export default [
     },
   },
   {
-    url: '/auth/avatar',
+    url: '/auth/getRoutes',
     method: 'post',
     response: () => {
-      return {
-        code: 0,
-        data: mockjs.Random.image(),
-      }
+      return [
+        {
+          /* 项目首页 */
+          path: '/',
+          name: 'Index',
+          component: '../layout/index.vue',
+          redirect: '/home',
+          meta: {
+            title: '主页',
+            keepAlive: true,
+          },
+          children: [
+            {
+              path: 'home',
+              component: '../pages/Index.vue',
+              meta: {
+                title: '主页',
+                keepAlive: true,
+              },
+            },
+          ],
+        },
+        {
+          /* 菜单1 */
+          path: '/menu',
+          name: 'Menu',
+          component: '../layout/index.vue',
+          redirect: '/menu/menu11',
+          meta: {
+            title: '菜单1',
+            name: 'Lock',
+          },
+          children: [
+            {
+              path: 'menu11',
+              component: '../pages/Menu/Menu1/Menu1.vue',
+              meta: {
+                title: 'menu1-1',
+              },
+            },
+            {
+              path: 'menu12',
+              component: '../pages/Menu/Menu2/Menu2.vue',
+              redirect: '/menu/menu12/menu123',
+              meta: {
+                title: 'menu1-2',
+              },
+              children: [
+                {
+                  path: 'menu123',
+                  component: '../pages/Menu/Menu2/Menu3/Menu3.vue',
+                  meta: {
+                    title: 'menu1-2-3',
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      ]
     },
   },
 ] as MockMethod[]

@@ -1,42 +1,35 @@
 import { defineStore } from 'pinia'
-import Cookies from 'js-cookie'
 import { authLogin } from '@/api/auth'
-
-const TOKEN = 'user_token'
-const USERNAME = 'user_name'
-
-export const getToken = function () {
-  return Cookies.get(TOKEN)
-}
-
-export const setToken = function (token: string) {
-  return Cookies.set(TOKEN, token, { expires: 7 }) // expires after 7 days
-}
-
-export const removeToken = function () {
-  return Cookies.remove(TOKEN)
-}
-
-export const getUsername = function () {
-  return Cookies.get(USERNAME)
-}
-
-export const setUsername = function (token: string) {
-  return Cookies.set(USERNAME, token, { expires: 7 }) // expires after 7 days
-}
-
-export const removeUsername = function () {
-  return Cookies.remove(USERNAME)
-}
+import { RouteRecordRaw } from 'vue-router'
+import router from '@/router/index'
+import { setToken, setUsername } from '@/utils/auth'
 
 const authStore = defineStore('user', {
-  state: () => ({}),
-  getters: {},
+  state: () => {
+    const routes: Array<RouteRecordRaw> = [] // 初始为空
+    return {
+      routes,
+    }
+  },
+  getters: {
+    dynamicRoutes(state) {
+      return state.routes
+    },
+  },
   actions: {
     async userLogin(params: AuthLoginParams) {
       const res = await authLogin(params)
       setToken(res.data.token)
       setUsername(res.data.name)
+    },
+    async updateRoutes(newRoute: Array<RouteRecordRaw>) {
+      this.routes = newRoute
+    },
+    userLogout() {
+      this.routes.forEach((item: RouteRecordRaw) => {
+        if (item.name) router.removeRoute(item.name)
+      })
+      this.routes = []
     },
   },
 })
